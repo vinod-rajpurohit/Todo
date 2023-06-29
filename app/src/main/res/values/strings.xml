@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ToDo</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_add_task">AddTask</string>
+    <string name="title_activity_my_notes">MyNotes</string>
+</resources>
