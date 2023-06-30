@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.LiveData
@@ -28,7 +29,7 @@ import com.google.firebase.database.*
 
 class MyNotes : ComponentActivity() {
     private val taskViewModel: TaskViewModel by lazy {
-        ViewModelProvider(this).get(TaskViewModel::class.java)
+        ViewModelProvider(this)[TaskViewModel::class.java]
     }
 
 
@@ -54,12 +55,23 @@ class MyNotes : ComponentActivity() {
 @Composable
 fun TaskListScreen(tasks: LiveData<List<Task2>>) {
     val taskList by tasks.observeAsState(emptyList())
-
+    if (taskList.isEmpty()) {
+        Text(
+            text = "No notes saved",
+            style = MaterialTheme.typography.body1,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            textAlign = TextAlign.Center
+        )
+    }
+    else{
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(taskList.size) { index ->
             val task = taskList[index]
             TaskItem(task)
         }
+    }
 
     }
 }
@@ -83,6 +95,7 @@ data class Task2(val description: String)
 
 class TaskViewModel : ViewModel() {
     private val tasksLiveData: MutableLiveData<List<Task2>> = MutableLiveData()
+
 
     init {
         val currentUser = FirebaseAuth.getInstance().currentUser

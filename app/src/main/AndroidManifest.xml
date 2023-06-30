@@ -16,22 +16,18 @@
         <activity
             android:name=".MyNotes"
             android:exported="false"
-            android:label="@string/title_activity_my_notes"
             android:theme="@style/Theme.ToDo" />
         <activity
             android:name=".AddTask"
             android:exported="false"
-            android:label="@string/title_activity_add_task"
             android:theme="@style/Theme.ToDo" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false"
-            android:label="@string/title_activity_register"
             android:theme="@style/Theme.ToDo" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:label="@string/title_activity_login"
             android:theme="@style/Theme.ToDo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

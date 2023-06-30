@@ -104,7 +104,7 @@ private fun saveTask(task: String, context: Context) {
 
         } else {
             // Handle the case when the user is not authenticated or the user ID is null
-            // You can show an error message or perform any other desired action
+
         }
 
     val intent = Intent(context, MainActivity::class.java)
